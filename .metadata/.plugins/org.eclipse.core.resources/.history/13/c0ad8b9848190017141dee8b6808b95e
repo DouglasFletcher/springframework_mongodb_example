@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+
+	<context:component-scan base-package="com.dbconnect.example.dao"></context:component-scan>
+
+	<context:property-placeholder
+		location="com/dbconnect/example/properties/jdbc.properties" />
+
+	<!-- oracle database template -->
+	<bean id="dataSourceOracle" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="${oraclejdbc.driver}"></property>
+		<property name="url" value="${oraclejdbc.url}"></property>
+		<property name="username" value="${oraclejdbc.username}"></property>
+		<property name="password" value="${oraclejdbc.password}"></property>
+	</bean>
+
+	<!-- mongo database template -->
+	<bean id="mongoClient" class="${mongojdbc.driver}" scope="singleton">
+		<constructor-arg name="host" type="String" value="${mongojdbc.host}"></constructor-arg>
+		<constructor-arg name="port" type="int" value="${mongojdbc.port}"></constructor-arg>
+	</bean>
+
+	<bean id="dataSourceMongo" class="org.springframework.data.mongodb.core.SimpleMongoDbFactory">
+		<constructor-arg name="mongoClient" value="mongoClient"></constructor-arg>
+		<constructor-arg name="databaseName" value="test"></constructor-arg>
+	</bean>
+	  
+
+	<!-- services -->
+	<!-- <bean id="userService" class="com.dbconnect.example.service.UserService"></bean> -->
+
+</beans>

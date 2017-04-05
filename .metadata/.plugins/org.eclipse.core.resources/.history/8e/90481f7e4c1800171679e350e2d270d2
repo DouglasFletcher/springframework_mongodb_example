@@ -1,0 +1,4 @@
+mongojdbc.username = SYSTEM
+mongojdbc.password = bhp7qd3c
+mongojdbc.driver = com.mongodb.MongoClient
+mongojdbc.url = jdbc:mongo://localhost:27017:test

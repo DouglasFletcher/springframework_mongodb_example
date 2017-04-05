@@ -1,0 +1,4 @@
+jdbc.username = SYSTEM
+jdbc.password = bhp7qd3c
+jdbc.driver = com.oracle.jdbc.driver
+jdbc.url = jdbc:mysql://localhost:1521/test

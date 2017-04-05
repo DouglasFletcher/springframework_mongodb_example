@@ -1,0 +1,35 @@
+DROP TABLE usersprojects;
+DROP TABLE projects;
+DROP TABLE users;
+
+-- DDL
+CREATE TABLE users (
+  userid NUMBER
+  , accountbalance NUMBER DEFAULT 0
+  , username VARCHAR2(50)
+  , firstname VARCHAR2(50)
+  , lastname VARCHAR2(50)
+  , CONSTRAINT user_pk PRIMARY KEY (username)
+);
+
+CREATE TABLE projects (
+  projectid NUMBER
+  , projectname VARCHAR2(50) NOT NULL
+  , creator VARCHAR2(50)
+  , CONSTRAINT project_pk PRIMARY KEY (projectid) 
+  , CONSTRAINT user_project_fk FOREIGN KEY (creator) REFERENCES users (username)
+  ON DELETE CASCADE
+);
+
+CREATE TABLE usersprojects (
+  username VARCHAR2(50) NOT NULL REFERENCES users (username) ON DELETE CASCADE
+  , projectid NUMBER NOT NULL REFERENCES projects (projectid) ON DELETE CASCADE
+  , CONSTRAINT projectuser_pk PRIMARY KEY (username, projectid)
+);
+
+-- testing
+INSERT INTO users VALUES (1, 0, 's4075983', 'douglas', 'fletcher');
+INSERT INTO projects VALUES (1, 'a good one', 's4075983');
+INSERT INTO usersprojects VALUES ('s4075983',1);
+
+SELECT * FROM users;

@@ -1,0 +1,11 @@
+<!-- define oracle data source parameters -->
+oraclejdbc.username = SYSTEM
+oraclejdbc.password = bhp7qd3c
+oraclejdbc.driver = oracle.jdbc.driver.OracleDriver
+oraclejdbc.url = jdbc:oracle:thin:@localhost:1521:xe
+
+<!-- define mongo data source parameters -->
+mongojdbc.driver = com.mongodb.MongoClient
+mongojdbc.host = localhost
+mongojdbc.port = 27017
+mongojdbc.database = "test"

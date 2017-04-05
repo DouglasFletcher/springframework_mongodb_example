@@ -1,0 +1,4 @@
+jdbc.username = SYSTEM
+jdbc.password = bhp7qd3c
+jdbc.driver = com.mongodb.MongoClient
+jdbc.url = mongodb://localhost jdbc:oracle:thin:@localhost:1521:xe

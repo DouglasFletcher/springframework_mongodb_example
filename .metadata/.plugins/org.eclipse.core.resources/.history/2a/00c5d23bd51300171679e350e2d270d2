@@ -1,0 +1,13 @@
+package com.dbconnect.example.test;
+
+public class App {
+
+	public static void main(String[] args) {
+		
+		Robot robot = new Robot("Billy", "Hello world");
+		robot.speak();
+		
+
+	}
+
+}

@@ -1,0 +1,23 @@
+package com.dbconnect.example.test;
+
+import org.springframework.context.annotation.ComponentScan;
+
+@ComponentScan
+public class Robot {
+
+	private String id;
+	private String speech;
+	private Legs legs;
+	
+	public Robot (String id, String speech, Legs legs){
+		this.id = id;
+		this.speech = speech;
+		this.legs = legs;
+	}
+	
+	public void speak(){
+		System.out.println("Robot: " + id + " - tells us: " + speech); 
+	}
+	
+	
+}

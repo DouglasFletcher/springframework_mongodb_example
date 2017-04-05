@@ -1,0 +1,15 @@
+package com.dbconnect.example.service;
+
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+
+import com.dbconnect.example.dao.UserMongoDAO;
+
+@Service("userService")
+public class UserService {
+
+	@Autowired
+	@Qualifier("mongoClient")
+	private UserMongoDAO userMongoDao;
+	
+}

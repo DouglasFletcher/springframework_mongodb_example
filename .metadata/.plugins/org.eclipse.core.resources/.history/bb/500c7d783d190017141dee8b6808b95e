@@ -1,0 +1,29 @@
+package com.dbconnect.example.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.dbconnect.example.dao.User;
+import com.dbconnect.example.dao.UserMongoDAO;
+import com.dbconnect.example.dao.UserOracleDAO;
+
+@Service("userService")
+public class UserService {
+
+	
+	@Autowired
+	private UserMongoDAO userDao;
+	/*
+	@Autowired
+	private UserOracleDAO userDao;
+	
+	public List<User> getAllUsers() {
+		return userDao.getUser();
+	}
+	*/
+	public UserMongoDAO getUserMongoDAO(){
+		return this.userDao;
+	}
+}

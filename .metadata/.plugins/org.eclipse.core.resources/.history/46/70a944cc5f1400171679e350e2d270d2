@@ -1,0 +1,5 @@
+package com.dbconnect.example.test;
+
+public class User {
+
+}

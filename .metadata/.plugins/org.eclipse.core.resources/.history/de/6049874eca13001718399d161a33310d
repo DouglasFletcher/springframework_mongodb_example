@@ -1,0 +1,17 @@
+package com.dbconnect.example.test;
+
+public class Robot {
+
+	private String id = "Robot 1";
+	private String speech = "hello world";
+	
+	public Robot (String id, String speech){
+		
+		this.id = id;
+		this.speech = speech;
+		
+	}
+	
+	
+	
+}

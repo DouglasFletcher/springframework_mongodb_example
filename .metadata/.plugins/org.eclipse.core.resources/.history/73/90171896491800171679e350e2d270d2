@@ -1,0 +1,43 @@
+package com.dbconnect.example.test;
+
+import java.util.List;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.dao.DataAccessException;
+
+public class App {
+
+	public static void main(String[] args) {
+		
+		ApplicationContext context = new ClassPathXmlApplicationContext("/com/dbconnect/example/beans/bean.xml");
+
+		List<User> users;
+		// get data from mongo database
+		UserMongoDAO userMongoDAO = (UserMongoDAO)context.getBean("userMongoDAO");
+		try{
+			users = userMongoDAO.getUser();
+		} catch (DataAccessException ex){
+			System.out.println(ex);
+		}
+
+		// get data from oracle database
+		UserDAO userDAO = (UserDAO)context.getBean("userDAO");
+		try{
+			users = userMongoDAO.getUser();
+		} catch (DataAccessException ex){
+			System.out.println(ex);
+		}
+
+		
+		for(User user: users){
+			System.out.println(user);
+		}
+		
+		
+		((ClassPathXmlApplicationContext)context).close();
+	
+	
+	}
+	
+}

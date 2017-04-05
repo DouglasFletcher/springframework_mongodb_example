@@ -1,0 +1,78 @@
+package com.dbconnect.example.test;
+
+
+import java.util.List;
+
+import org.bson.Document;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
+import com.mongodb.client.MongoDatabase;
+
+@Component("userMongoDAO")
+public class UserMongoDAO {
+
+	private MongoClient mongoclient;
+	
+	@Autowired
+	@Qualifier("dataSourceMongo")
+	public void setDataSource(MongoClient mongoclient) {
+		this.mongoclient = mongoclient;
+	}
+
+	public List<User> getUser(){
+		
+		
+		
+		// get collection interator
+		MongoDatabase dbase = mongoclient.getDatabase("test");
+		MongoCollection<Document> collection = dbase.getCollection("users");
+		MongoCursor<Document> cursor = collection.find().iterator();
+
+		// find users
+		try{
+			while(cursor.hasNext()){
+				Document cur = cursor.next();
+				User user = new User();
+				user.setAccountbalance(cur.getInteger("accountbalance"));
+				user.setFirstname(cur.getString("firstname"));
+				user.setLastname(cur.getString("lastname"));
+				user.setUserid(cur.getInteger("userid"));
+				user.setUsername(cur.getString("username"));
+				
+			}
+		}
+		finally {
+			cursor.close();
+		}
+		
+		
+		System.out.println(mongoclient.getDatabase("test"));
+		/*
+		return jdbc.query("select * from users", new RowMapper<User>(){
+			
+			public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+				
+				User user = new User();
+				user.setAccountbalance(rs.getInt("accountbalance"));
+				user.setFirstname(rs.getString("firstname"));
+				user.setLastname(rs.getString("lastname"));
+				user.setUserid(rs.getInt("userid"));
+				user.setUsername(rs.getString("username"));
+				
+				return user;
+			}
+		});
+		*/
+		return null;
+		
+	};
+		
+		
+	
+	
+}

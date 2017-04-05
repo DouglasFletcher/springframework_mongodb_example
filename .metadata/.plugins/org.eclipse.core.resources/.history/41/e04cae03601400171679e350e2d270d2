@@ -1,0 +1,12 @@
+package com.dbconnect.example.test;
+
+public class User {
+
+	private String username;
+	private String gender;
+	private String password;
+	private int age;
+	
+	
+	
+}

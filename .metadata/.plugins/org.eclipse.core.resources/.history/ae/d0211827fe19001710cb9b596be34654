@@ -1,0 +1,31 @@
+package com.dbconnect.example.dao;
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.mongodb.MongoDbFactory;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.stereotype.Component;
+
+
+@Component("userMongoDAO")
+public class UserMongoDAO {
+
+	private MongoTemplate mongoTemplate;
+	
+	@Autowired
+	@Qualifier("dataSourceMongo")
+	public void setDataSource(MongoDbFactory dataSourceMongo) {
+		this.mongoTemplate = new MongoTemplate(dataSourceMongo);
+	};
+
+	
+	public List<UserMongo> getAll() {
+		return mongoTemplate.findAll(UserMongo.class);
+	}
+	
+	
+}
