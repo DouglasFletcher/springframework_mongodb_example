@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 
 @Component("userMongoDAO")
+@Repository
 public class UserMongoDAO {
 
 	private MongoTemplate mongoTemplate;

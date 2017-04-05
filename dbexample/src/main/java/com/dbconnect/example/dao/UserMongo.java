@@ -7,8 +7,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class UserMongo {
 
-	@Id
-	private String id;
 	@Indexed
 	private int userid;
 	private int accountbalance;
@@ -18,8 +16,7 @@ public class UserMongo {
 
 	public UserMongo(){}
 	
-	public UserMongo(String id, int userid, int accountbalance, String username, String firstname, String lastname) {
-		this.id = id;
+	public UserMongo(int userid, int accountbalance, String username, String firstname, String lastname) {
 		this.userid = userid;
 		this.accountbalance = accountbalance;
 		this.username = username;
@@ -57,16 +54,10 @@ public class UserMongo {
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
 	
 	@Override
 	public String toString() {
-		return "UserMongo [id=" + id + ", userid=" + userid + ", accountbalance=" + accountbalance + ", username="
+		return "UserMongo [ userid=" + userid + ", accountbalance=" + accountbalance + ", username="
 				+ username + ", firstname=" + firstname + ", lastname=" + lastname + "]";
 	}
 

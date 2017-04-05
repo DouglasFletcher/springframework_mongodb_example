@@ -15,23 +15,24 @@ public class App {
 		
 		// create user object
 		System.out.println("creating test data...");
-		UserMongo userMongo1 = new UserMongo("1", 1, 0, "ddfletcher", "douglas", "fletcher");
-				
+		UserMongo userMongo1 = new UserMongo(1, 0, "ddfletcher", "douglas", "fletcher");
+		
 		// get users from user service
+		System.out.println("get userService bean...");
 		UserService userService = (UserService)context.getBean("userService");
 		
+		// add user values
+		System.out.println("inserting users...");
 		userService.insertUser(userMongo1);
 		
 		// get users
-		/*
 		List<UserMongo> users = userService.getAllUsers();
 
-		System.out.println(users);
 		// print users
 		for(UserMongo user: users){
 			System.out.println(user);
 		}
-		*/	
+		
 		// close context path
 		((ClassPathXmlApplicationContext)context).close();
 	
