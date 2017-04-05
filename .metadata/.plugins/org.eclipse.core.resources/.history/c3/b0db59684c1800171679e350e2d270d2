@@ -1,4 +1,0 @@
-oraclejdbc.username = SYSTEM
-oraclejdbc.password = bhp7qd3c
-oraclejdbc.driver = oracle.jdbc.driver.OracleDriver
-oraclejdbc.url = jdbc:oracle:thin:@localhost:1521:xe
