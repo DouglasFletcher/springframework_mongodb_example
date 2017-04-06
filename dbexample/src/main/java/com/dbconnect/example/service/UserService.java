@@ -12,20 +12,40 @@ import com.dbconnect.example.dao.UserMongoDAO;
 
 @Service("userService")
 public class UserService {
-
 	
 	@Autowired
 	private UserMongoDAO userDao;
 
-	// get users
+	public UserMongoDAO getUserDao() {
+		return userDao;
+	}
+
+	// get all users
 	public List<UserMongo> getAllUsers() {
-		return userDao.getUsers();
+		return userDao.getAllUsers();
 	}
 	
+	// get one user
+	public UserMongo getOneUser(int userId) {
+		return userDao.getOneUser(userId);
+	}
+		
 	// insert user
 	public void insertUser(UserMongo userMongo) {
-		userDao.save(userMongo);
+		userDao.insertOneUser(userMongo);
 	}
+	
+	// insert users
+	public void insertManyUsers(List<UserMongo> usersMongo){
+		userDao.insertAllUsers(usersMongo);
+	}
+	
+	// update user
+	
+	
+	// update users
+	
+	
 	
 	/*
 	@Autowired
