@@ -40,19 +40,24 @@ public class UserService {
 		userDao.insertAllUsers(usersMongo);
 	}
 	
-	// update user
-	
-	
-	// update users
-	
-	
-	
-	/*
+	/*	
 	@Autowired
 	private UserOracleDAO userDao;
 		
 	public List<UserOracle> getAllUsers() {
-		return userDao.getUsers();
+		return userDao.getAllUsers();
+	}
+	
+	public UserOracle getOneUser(int userId) {
+		return userDao.getOneUser(userId);
+	};
+	
+	public void insertUser(UserOracle userOracle){
+		userDao.insertOneUser(userOracle);
+	}
+	
+	public void insertManyUsers(List<UserOracleDAO> usersOracle) {
+		userDao.insertAllUsers(usersOracle);
 	}
 	*/
 }

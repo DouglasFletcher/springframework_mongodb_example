@@ -9,6 +9,7 @@ public class App {
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext("/com/dbconnect/example/beans/dao-context.xml");
 		
+	
 		// close context path
 		((ClassPathXmlApplicationContext)context).close();
 	

@@ -1,6 +1,7 @@
 package com.dbconnect.example.dao;
 
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +51,8 @@ public class UserMongoDAO {
 
 	// insert all users
 	public void insertAllUsers(List<UserMongo> usersMongo){
-		mongoTemplate.insert(usersMongo);
+		Collection<UserMongo> collection = usersMongo;
+		mongoTemplate.insert(collection, UserMongo.class);
 	}
 	
 	// insert one user

@@ -58,19 +58,14 @@ public class UserServiceTest {
 		
 		// insert test users
 		this.users = users;
-		
 	}
 	
 	
 	@Test
 	public void testInsertGetOneUser() {
 
-		// __INIT check
-		MongoTemplate mongoTemplate = userService.getUserDao().getMongoTemplate();
-		if (mongoTemplate.collectionExists("userMongo")){
-			mongoTemplate.dropCollection("userMongo");
-		}
-		
+		System.out.println("testing insert & get one user:");
+				
 		// expected Result
 		List<UserMongo> expectedResult = this.users; 
 		UserMongo expectedResult0 = expectedResult.get(0); 
@@ -83,40 +78,43 @@ public class UserServiceTest {
 		UserMongo result1 = userService.getOneUser(expectedResult1.getUserid());
 		
 		// test: correct query
-		assertEquals("query one user: insert & get truth test", expectedResult0, result0);
+		assertEquals("query one user: insert & get true", expectedResult0, result0);
+		System.out.println("expected result true test:");
+		System.out.println(expectedResult0);
+		System.out.println("expected result true test:");
+		System.out.println(result0);
 		// test: false query
-		assertNotEquals("query one user: insert & get not fail test", expectedResult0, result1);	
-		
+		assertNotEquals("query one user: insert & get false", expectedResult0, result1);	
+		System.out.println("expected result false test:");
+		System.out.println(expectedResult0);
+		System.out.println("expected result false test:");
+		System.out.println(result1);
+		System.out.println("\n");
 	}
 
 	@Test
 	public void testInsertGetManyUsers() {
 
-		// __INIT check
-		MongoTemplate mongoTemplate = userService.getUserDao().getMongoTemplate();
-		if (mongoTemplate.collectionExists("userMongo")){
-			mongoTemplate.dropCollection("userMongo");
-		}
-		
+		System.out.println("testing insert & get many users:");
+
 		// expected Result
 		List<UserMongo> expectedResult = this.users; 
 		
 		// actual Result
-		//userService.insertManyUsers(expectedResult);
-		//List<UserMongo> result = userService.getAllUsers();
+		userService.insertManyUsers(expectedResult);
+		List<UserMongo> result = userService.getAllUsers();
 		
 		// test: count of users
-		//assertEquals("query many users: equal count truth test", expectedResult.size(), result.size());
+		assertEquals("query many users: equal count truth test", expectedResult.size(), result.size());
 		// test: correct query
-		/*
 		for (int val = 0; val < expectedResult.size(); val++){
-			assertEquals(
-				"query many users: insert & get truth test"
-				, result.get(val)
-				, expectedResult.get(val)
+			System.out.println("expected result");
+			System.out.println(expectedResult.get(val));
+			System.out.println("actual result");
+			System.out.println(result.get(val));
+			assertEquals("query many users: insert & get truth test"
+				, result.get(val), expectedResult.get(val)
 			);
-		}
-		*/
-		
+		}						
 	}
 }

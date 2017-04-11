@@ -9,6 +9,7 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
@@ -23,7 +24,7 @@ public class UserOracleDAO {
 		this.jdbc = new JdbcTemplate(jdbc);
 	}
 
-	public List<UserOracle> getUsers(){
+	public List<UserOracle> getAllUsers(){
 		
 		return jdbc.query("select * from users", new RowMapper<UserOracle>(){
 			
@@ -41,6 +42,19 @@ public class UserOracleDAO {
 		});
 		
 	};
+	
+	public UserOracle getOneUser(int userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void insertOneUser(UserOracle userOracle) {
+		// TODO Auto-generated method stub
+	}
+
+	public void insertAllUsers(List<UserOracleDAO> usersOracle) {
+		// TODO Auto-generated method stub
+	}
 		
 		
 	

@@ -1,7 +1,12 @@
 package com.dbconnect.example.dao;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+
 public class UserOracle {
 
+	@Indexed
+	@Id
 	private int userid;
 	private int accountbalance;
 	private String username;
